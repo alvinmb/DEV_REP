@@ -149,6 +149,18 @@ def processhappypkt():
                 command_str = ''
                 stateMachine = stateMachineBoot
 
+#----------------------------------------------------------------------------------------
+#Function to process the [REBX] command
+def processrebxkt(command_str):
+    length_command_str = len(command_str)
+    command_str = command_str[7:length_command_str]
+    if (command_str == 0):
+        #soft reset
+        print 'Sytem Reset Requsted. System will now reboot'
+        stateMachine = stateMachineIdle
+    else
+        #hard Reset
+        pass
 
 def main():
     macAddress = ''
@@ -245,11 +257,8 @@ def main():
 
             except KeyboardInterrupt:
 
-
-
             # State machine is entering the boot phase
             # We connect to the serverHost and serverPort returned by the snbb message and we sent a boot packet and listen for a replay
-
 
                 while (stateMachine == stateMachineBoot):
                     print 'Entered Boot Mode'
@@ -283,17 +292,18 @@ def main():
                 lastHappyTime = datetime.datetime.now()
 
                 #wait for a reply and then process the reply
-                tmessage = tsocket.recv(1024)
+                tmessage = ts.recv(1024)
                 print 'First String', tmessage
                 length_tmessage = len(tmessage)
 
                 if ('[DISP]' in tmessage):
                     transactionMessage = transactionMessage[7:length_tmessage]
                     print 'Message to Display' + tmessage
+
                 elif ('[CRDS]' in tmessage):
                     tmessage = tmessage[7:length_tmessage]
                     print tmessage
-                    tsocket.sendall('[EOTX]/r/n')
+                    ts.sendall('[EOTX]/r/n')
                     stateMachine = stateMachineRun
 
                 elif ('[CNFG]' in tmessage):
