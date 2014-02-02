@@ -308,16 +308,22 @@ def main():
 
                 elif ('[CNFG]' in tmessage):
                     print'CNFG message' + tmessage
+
                 elif ('[CMSG]' in tmessage):
                     print'CCMSG message' + tmessage
+
                 elif ('[MSSG]' in tmessage):
                     print'MSSG message' + tmessage
+
                 elif ('[DEVC]' in tmessage):
                     print'DEVC message' + tmessage
+
                 elif ('[IEVM]' in tmessage):
                     print'IEVM message' + tmessage
+
                 elif ('[RELY]' in tmessage):
                     print'RELY message' + tmessage
+
                 else:
                     stateMachine = stateMachineRun
 
@@ -331,6 +337,7 @@ def main():
 
                         if command_message:
                             cs.sendall('EOTX\r\n')
+                            
                             if ('[PRCE]' in command_message):
                                 print'PRCE Message found'
                                 print command_message
