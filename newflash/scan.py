@@ -337,9 +337,7 @@ def main():
 
                             elif ('[REBX]' in command_message):
                                 print'REBX Message found'
-                                print command_message
-                                print 'Soft Reset'
-                                stateMachine = stateMachineIdle
+                                processrebxkt(commnd_str)
 
                             elif ('[DELY]' in command_message):
                                 print'DELY Message found'
