@@ -158,7 +158,7 @@ def processrebxkt(command_str):
         #soft reset
         print 'Sytem Reset Requsted. System will now reboot'
         stateMachine = stateMachineIdle
-    else
+    else:
         #hard Reset
         pass
 
@@ -337,7 +337,7 @@ def main():
 
                             elif ('[REBX]' in command_message):
                                 print'REBX Message found'
-                                processrebxkt(commnd_str)
+                                processrebxkt(command_str)
 
                             elif ('[DELY]' in command_message):
                                 print'DELY Message found'
