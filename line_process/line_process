@@ -1,0 +1,7 @@
+def process_line(line,char):
+
+    lengthofline = len(line)
+    string = line[start:char]
+
+    line   = line[char:]
+

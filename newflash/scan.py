@@ -1,11 +1,11 @@
 #!/usr/bin/python
 import sys
 import socket
-import time
 import datetime
-import serial
 import uuid
 import re
+
+import serial
 
 sys.path.insert(0, '/usr/lib/python2.7/bridge/')
 from bridgeclient import BridgeClient as bridgeclient
@@ -337,7 +337,7 @@ def main():
 
                         if command_message:
                             cs.sendall('EOTX\r\n')
-                            
+
                             if ('[PRCE]' in command_message):
                                 print'PRCE Message found'
                                 print command_message
